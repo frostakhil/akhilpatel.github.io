@@ -2576,21 +2576,21 @@ article.hentry .main-container .row-container .row-parent {
   }
 }
 .main-container .row-container .exa-bottom-padding {
-  padding-bottom: 180px;
+  padding-bottom: 0px;
 }
 @media (max-width: 1699px) {
   .main-container .row-container .exa-bottom-padding {
-    padding-bottom: 162px;
+    padding-bottom: 0px;
   }
 }
 @media (max-width: 1499px) {
   .main-container .row-container .exa-bottom-padding {
-    padding-bottom: 144px;
+    padding-bottom: 0px;
   }
 }
 @media (max-width: 959px) {
   .main-container .row-container .exa-bottom-padding {
-    padding-bottom: 108px;
+    padding-bottom: 0px;
   }
 }
 @media (min-width: 960px) {
