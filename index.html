@@ -170,7 +170,7 @@ var SiteParameters = {"days":"days","hours":"hours","minutes":"minutes","seconds
 
 
 </li>
-<li id="menu-item-73493" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-73493 dropdown menu-item-link"><a title="Pages" href="#" data-toggle="dropdown" class="dropdown-toggle" data-type="title">Pages<i class="fa fa-angle-down fa-dropdown"></i></a>
+<li id="menu-item-73493" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-73493 dropdown menu-item-link"><a title="Pages" href="#scrolll" data-toggle="dropdown" class="dropdown-toggle" data-type="title">Pages<i class="fa fa-angle-down fa-dropdown"></i></a>
 
 </li>
 <li id="menu-item-73494" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-73494 dropdown menu-item-link"><a title="Features" href="#" data-toggle="dropdown" class="dropdown-toggle" data-type="title">Features<i class="fa fa-angle-down fa-dropdown"></i></a>
@@ -215,9 +215,9 @@ var SiteParameters = {"days":"days","hours":"hours","minutes":"minutes","seconds
                  <div style="padding-top: 20px;"   class="isotope-filters menu-container single-gutter filter-scroll">
               <div class="menu-horizontal limit-width menu-light text-right">
                   <ul class="menu-smart text-uppercase">
-                                            <li class=" float-left">
+                                            <li id="scrolll" class=" float-left">
                           <span>
-                                                <a href="#" data-filter="*" class="active">
+                                                <a  href="#" data-filter="*" class="active">
                                                 Show all</a>
                           </span>
                       </li>
@@ -548,6 +548,43 @@ var wc_cart_fragments_params = {"ajax_url":"\/mySite\/wp-admin\/admin-ajax.php",
 				// The customizer requires postMessage and CORS (if the site is cross domain)
 				b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
 			}());
+		</script>
+		<script>
+			$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
 		</script>
 	<!--<![endif]-->
 			
